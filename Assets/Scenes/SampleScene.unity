@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 427914272}
   - component: {fileID: 427914273}
   - component: {fileID: 427914274}
+  - component: {fileID: 427914275}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -452,6 +453,12 @@ MonoBehaviour:
   clonePrefab: {fileID: 4803089609788659269, guid: af68e235df83a6d47a52647942eaae03, type: 3}
   cloneDuration: 1.5
   canAttack: 1
+  createCloneOnDashStart: 0
+  createCloneOnDashOver: 0
+  canCreateCloneOnCounterAttack: 0
+  canDuplicateClone: 0
+  chanceToDuplicate: 0
+  crystalInsteadOfClone: 0
 --- !u!114 &427914273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +511,33 @@ MonoBehaviour:
   maxSize: 15
   growSpeed: 3
   shrinkSpeed: 6
+--- !u!114 &427914275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427914268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0fd896cf3200449a95b7c565f56dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  crystalDuration: 1.5
+  crystalPrefab: {fileID: 166080570117307205, guid: 42adb056257966345ae8910dc784c162, type: 3}
+  cloneInsteadOfCrystal: 0
+  canExplode: 1
+  canMoveTotEnemy: 1
+  moveSpeed: 4
+  canUseMultiStack: 1
+  amountOfStack: 3
+  multiStackCooldown: 4
+  useTimeWindow: 2.5
+  crystalLeft:
+  - {fileID: 166080570117307205, guid: 42adb056257966345ae8910dc784c162, type: 3}
+  - {fileID: 166080570117307205, guid: 42adb056257966345ae8910dc784c162, type: 3}
+  - {fileID: 166080570117307205, guid: 42adb056257966345ae8910dc784c162, type: 3}
 --- !u!1 &490535868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3011,3 +3045,60 @@ Transform:
   m_Father: {fileID: 1093690475}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3217134257414567761
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 166080570117307205, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081472462632135714, guid: 42adb056257966345ae8910dc784c162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42adb056257966345ae8910dc784c162, type: 3}
