@@ -13,13 +13,10 @@ public class PlayerWallSlideState : PlayerState
         base.Enter();
     }
 
-
     public override void Exit()
     {
         base.Exit();
     }
-
-
 
     public override void Update()
     {
@@ -32,14 +29,16 @@ public class PlayerWallSlideState : PlayerState
         }
 
         if (xInput != 0 && player.facingDir != xInput)
-            stateMachine.ChangeState(player.idleState);
+                stateMachine.ChangeState(player.idleState);
 
         if (yInput < 0)
             rb.velocity = new Vector2(0, rb.velocity.y);
         else
             rb.velocity = new Vector2(0, rb.velocity.y * .7f);
 
-        if (player.IsGroundDetected())
-            stateMachine.ChangeState(player.idleState);
+        if(player.IsGroundDetected())
+                stateMachine.ChangeState(player.idleState);
+
     }
+
 }

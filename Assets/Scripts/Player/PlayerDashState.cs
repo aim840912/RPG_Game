@@ -15,6 +15,8 @@ public class PlayerDashState : PlayerState
         player.skill.clone.CreateCloneOnDashStart();
 
         stateTimer = player.dashDuration;
+        
+        
     }
 
     public override void Exit()
@@ -36,5 +38,7 @@ public class PlayerDashState : PlayerState
 
         if (stateTimer < 0)
             stateMachine.ChangeState(player.idleState);
+        
+
     }
 }

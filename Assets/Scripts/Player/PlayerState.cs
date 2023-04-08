@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState
+public class PlayerState 
 {
     protected PlayerStateMachine stateMachine;
     protected Player player;
@@ -20,7 +20,7 @@ public class PlayerState
     {
         this.player = _player;
         this.stateMachine = _stateMachine;
-        this.animBoolName = _animBoolName;
+        this.animBoolName= _animBoolName;
     }
 
     public virtual void Enter()
@@ -29,6 +29,7 @@ public class PlayerState
         rb = player.rb;
         triggerCalled = false;
     }
+
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
@@ -36,7 +37,9 @@ public class PlayerState
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         player.anim.SetFloat("yVelocity", rb.velocity.y);
+
     }
+
     public virtual void Exit()
     {
         player.anim.SetBool(animBoolName, false);
@@ -46,4 +49,5 @@ public class PlayerState
     {
         triggerCalled = true;
     }
+    
 }

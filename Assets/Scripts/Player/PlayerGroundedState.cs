@@ -13,14 +13,10 @@ public class PlayerGroundedState : PlayerState
         base.Enter();
     }
 
-
-
     public override void Exit()
     {
         base.Exit();
     }
-
-
 
     public override void Update()
     {
@@ -30,7 +26,7 @@ public class PlayerGroundedState : PlayerState
             stateMachine.ChangeState(player.blackHole);
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword())
-            stateMachine.ChangeState(player.aimSword);
+            stateMachine.ChangeState(player.aimSowrd);
 
         if (Input.GetKeyDown(KeyCode.Q))
             stateMachine.ChangeState(player.counterAttack);

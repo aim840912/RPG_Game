@@ -16,7 +16,7 @@ public class Enemy : Entity
     public float moveSpeed;
     public float idleTime;
     public float battleTime;
-    public float defaultMoveSpeed;
+    private float defaultMoveSpeed;
 
     [Header("Attack info")]
     public float attackDistance;
@@ -24,7 +24,7 @@ public class Enemy : Entity
     [HideInInspector] public float lastTimeAttacked;
 
     public EnemyStateMachine stateMachine { get; private set; }
-
+    public string lastAnimBoolName {  get; private set; }
     protected override void Awake()
     {
         base.Awake();
@@ -37,12 +37,32 @@ public class Enemy : Entity
     {
         base.Update();
 
+
         stateMachine.currentState.Update();
+
     }
 
-    public virtual void FreezeTime(bool _timeFreeze)
+    public virtual void AssignLastAnimName(string _animBoolName) => lastAnimBoolName = _animBoolName;
+
+
+    public override void SlowEntityBy(float _slowPercentage, float _slowDuration)
     {
-        if (_timeFreeze)
+        moveSpeed = moveSpeed * (1 - _slowPercentage);
+        anim.speed = anim.speed * (1 - _slowPercentage);
+
+        Invoke("ReturnDefaultSpeed", _slowDuration);
+    }
+
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+
+        moveSpeed = defaultMoveSpeed;
+    }
+
+    public virtual void FreezeTime(bool _timeFrozen)
+    {
+        if (_timeFrozen)
         {
             moveSpeed = 0;
             anim.speed = 0;
@@ -54,8 +74,10 @@ public class Enemy : Entity
         }
     }
 
-    protected virtual IEnumerator FreezeTimeFor(float _seconds)
+    protected virtual IEnumerator FreezeTimerFor(float _seconds)
     {
+
+
         FreezeTime(true);
 
         yield return new WaitForSeconds(_seconds);
@@ -64,7 +86,6 @@ public class Enemy : Entity
     }
 
     #region Counter Attack Window
-
     public virtual void OpenCounterAttackWindow()
     {
         canBeStunned = true;
@@ -76,8 +97,8 @@ public class Enemy : Entity
         canBeStunned = false;
         counterImage.SetActive(false);
     }
-
     #endregion
+
     public virtual bool CanBeStunned()
     {
         if (canBeStunned)
@@ -92,7 +113,6 @@ public class Enemy : Entity
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
     public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, 50, whatIsPlayer);
-
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

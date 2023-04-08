@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerCatchSwordState : PlayerState
 {
@@ -8,7 +9,6 @@ public class PlayerCatchSwordState : PlayerState
     public PlayerCatchSwordState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
-
 
     public override void Enter()
     {
@@ -22,9 +22,9 @@ public class PlayerCatchSwordState : PlayerState
             player.Flip();
 
         rb.velocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.velocity.y);
+
+            
     }
-
-
 
     public override void Exit()
     {
@@ -33,8 +33,6 @@ public class PlayerCatchSwordState : PlayerState
         player.StartCoroutine("BusyFor", .1f);
     }
 
-
-
     public override void Update()
     {
         base.Update();
@@ -42,4 +40,5 @@ public class PlayerCatchSwordState : PlayerState
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }
+
 }

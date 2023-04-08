@@ -13,22 +13,20 @@ public class PlayerAirState : PlayerState
         base.Enter();
     }
 
-
     public override void Exit()
     {
         base.Exit();
     }
 
-
-
     public override void Update()
     {
         base.Update();
 
+
         if (player.IsWallDetected())
             stateMachine.ChangeState(player.wallSlide);
 
-        if (player.IsGroundDetected())
+        if(player.IsGroundDetected())
             stateMachine.ChangeState(player.idleState);
 
         if (xInput != 0)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAimSwordState : PlayerState
@@ -8,7 +9,6 @@ public class PlayerAimSwordState : PlayerState
     {
     }
 
-
     public override void Enter()
     {
         base.Enter();
@@ -16,16 +16,12 @@ public class PlayerAimSwordState : PlayerState
         player.skill.sword.DotsActive(true);
     }
 
-
-
     public override void Exit()
     {
         base.Exit();
 
         player.StartCoroutine("BusyFor", .2f);
     }
-
-
 
     public override void Update()
     {
@@ -40,8 +36,7 @@ public class PlayerAimSwordState : PlayerState
 
         if (player.transform.position.x > mousePosition.x && player.facingDir == 1)
             player.Flip();
-        else if (player.transform.position.x < mousePosition.x && player.facingDir == -1)
+        else if(player.transform.position.x < mousePosition.x && player.facingDir == -1)
             player.Flip();
     }
 }
-
